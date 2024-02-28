@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Template that uses Bootstrap</title>
     <!-- Bootstrap CSS -->
     <link
@@ -10,71 +10,77 @@
       rel="stylesheet"
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
-    >
+    />
     <style>
       .container-bg {
         background: lightgray;
+        .calculator-screen {
+          width: 100%;
+          height: 80px;
+          border: none;
+          background-color: gray;
+          color: #fff;
+          text-align: right;
+          padding-right: 20px;
+          padding-left: 10px;
+          font-size: 4rem;
+        }
       }
     </style>
   </head>
   <body>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg"></div>
-          <div class="col-sm">
-            <div class="container container-bg mt-5 border border-dark ">
-              <div class="row mb-1">
-                <input
-                  type="text"
-                  class="calculator-screen z-depth-1"
-                  value="0"
-                  disabled
-                >
-              </div>
-              <section class="row mb-1">
-                <div class="btn-secondary waves-effect col me-1"><p>mc</p></div>
-                <div class="btn-secondary waves-effect col me-1"><p>m+</p></div>
-                <div class="btn-secondary waves-effect col me-1"><p>m</p></div>
-                <div class="btn-secondary waves-effect col me-1"><p>mr</p></div>
-              </section>
-              <section class="row mb-1">
-                <div class="btn-secondary waves-effect col me-1"><p>AC</p></div>
-                <div class="btn-secondary waves-effect col me-1">
-                  <p><span>&#8730;</span>x</p>
-                </div>
-                <div class="btn-secondary waves-effect col me-1"><p>%</p></div>
-                <div class="btn-warning waves-effect col me-1"><p>÷</p></div>
-              </section>
-              <section class="row mb-1">
-                <div class="btn-light waves-effect col me-1"><p>7</p></div>
-                <div class="btn-light waves-effect col me-1"><p>8</p></div>
-                <div class="btn-light waves-effect col me-1"><p>9</p></div>
-                <div class="btn-warning waves-effect col me-1"><p>x</p></div>
-              </section>
-              <section class="row mb-1">
-                <div class="btn-light waves-effect col me-1"><p>4</p></div>
-                <div class="btn-light waves-effect col me-1"><p>5</p></div>
-                <div class="btn-light waves-effect col me-1"><p>6</p></div>
-                <div class="btn-warning waves-effect col me-1"><p>-</p></div>
-              </section>
-              <section class="row mb-1">
-                <div class="btn-light waves-effect col me-1"><p>1</p></div>
-                <div class="btn-light waves-effect col me-1"><p>2</p></div>
-                <div class="btn-light waves-effect col me-1"><p>3</p></div>
-                <div class="btn-warning waves-effect col me-1"><p>+</p></div>
-              </section>
-              <section class="row">
-                <div class="btn-light waves-effect col me-1"><p>0</p></div>
-                <div class="btn-light waves-effect col me-1"><p>.</p></div>
-                <div class="btn-light waves-effect col me-1"><p>+/-</p></div>
-                <div class="btn-warning waves-effect col me-1"><p>=</p></div>
-              </section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg"></div>
+        <div class="col-sm">
+          <div class="container container-bg mt-5 border border-dark">
+            <div class="row mb-1">
+              <input type="text" class="calculator-screen" value="0" disabled />
             </div>
+            <section class="row mb-1">
+              <div class="btn-secondary waves-effect col me-1"><p>mc</p></div>
+              <div class="btn-secondary waves-effect col me-1"><p>m+</p></div>
+              <div class="btn-secondary waves-effect col me-1"><p>m</p></div>
+              <div class="btn-secondary waves-effect col me-1"><p>mr</p></div>
+            </section>
+            <section class="row mb-1">
+              <div class="btn-secondary waves-effect col me-1"><p>AC</p></div>
+              <div class="btn-secondary waves-effect col me-1">
+                <p><span>&#8730;</span>x</p>
+              </div>
+              <div class="btn-secondary waves-effect col me-1"><p>%</p></div>
+              <div class="btn-warning waves-effect col me-1"><p>÷</p></div>
+            </section>
+            <section class="row mb-1">
+              <div class="btn-light waves-effect col me-1"><p>7</p></div>
+              <div class="btn-light waves-effect col me-1"><p>8</p></div>
+              <div class="btn-light waves-effect col me-1"><p>9</p></div>
+              <div class="btn-warning waves-effect col me-1"><p>x</p></div>
+            </section>
+            <section class="row mb-1">
+              <div class="btn-light waves-effect col me-1"><p>4</p></div>
+              <div class="btn-light waves-effect col me-1"><p>5</p></div>
+              <div class="btn-light waves-effect col me-1"><p>6</p></div>
+              <div class="btn-warning waves-effect col me-1"><p>-</p></div>
+            </section>
+            <section class="row mb-1">
+              <div class="btn-light waves-effect col me-1"><p>1</p></div>
+              <div class="btn-light waves-effect col me-1"><p>2</p></div>
+              <div class="btn-light waves-effect col me-1"><p>3</p></div>
+              <div class="btn-warning waves-effect col me-1"><p>+</p></div>
+            </section>
+            <section class="row">
+              <div class="btn-light waves-effect col me-1"><p>0</p></div>
+              <div class="btn-light waves-effect col me-1"><p>.</p></div>
+              <div class="btn-light waves-effect col me-1"><p>+/-</p></div>
+              <div class="btn-warning waves-effect col me-1"><p>=</p></div>
+            </section>
           </div>
-
-          <div class="col-lg"></div>
         </div>
+
+        <div class="col-lg"></div>
       </div>
+    </div>
     <!-- Optional JavaScript -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
