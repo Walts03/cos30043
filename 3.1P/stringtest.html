@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Test</title>
+</head>
+<body>
+    <div id="app">
+        <h1>String Test</h1>
+        {{ string }} <input type="text" v-model="strName">  
+        <p v-if="strName.toLowerCase() === 'trung'">Awesome Name!</p>
+        <p v-else-if="strName === '' ">Please input a name!</p>
+        <p v-else>
+            <i>{{strName}}</i> is NOT my Name!
+        </p>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+
+        const app = Vue.createApp({
+          data() {
+            return {
+              string: "Please enter your name:",
+              strName: "Trung",
+            }
+          },
+        })
+      
+       app.mount('#app')
+      
+      </script>
+</body>
+</html>
