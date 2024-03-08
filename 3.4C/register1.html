@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <title>Register</title>
+  </head>
+  <body>
+    <div id="app">
+      <section class="container">
+        <h1>Registration Form</h1>
+        <form @submit.prevent="submitForm">
+          <h2>Login Information</h2>
+          <!-- Username -->
+          <div class="form-group">
+            <label for="username" class="form-check-label">Username:</label>
+            <input
+              class="form-control"
+              v-model="user.username"
+              type="text"
+              placeholder="Enter your Username..."
+              required
+            />
+          </div>
+          <!-- Password -->
+          <div class="form-group">
+            <label for="password" class="form-check-label">Password:</label>
+            <input
+              class="form-control"
+              v-model="user.password"
+              type="password"
+              placeholder="Enter your Password..."
+              required
+            />
+          </div>
+          <!-- Re-enter Password -->
+          <div class="form-group mb-2">
+            <label for="re_password" class="form-check-label"
+              >Re-enter Password:</label
+            >
+            <input
+              class="form-control"
+              v-model="re_password"
+              type="password"
+              placeholder="Re-enter your password..."
+              required
+            />
+            <!-- Check password and re_password match -->
+            <div v-if="passwordNoMatch" class="alert alert-danger mt-2">
+              Passwords do not match.
+            </div>
+          </div>
+          <!-- Operating system -->
+          <div class="form-group">
+            <h2>Operating System</h2>
+            <div class="form-check col-md-4" v-for="os in separateOS" :key="os">
+              <div class="row-cols-md-9">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  v-model="user.os"
+                  :value="os"
+                />
+                <label class="form-check-label">{{ os }}</label>
+              </div>
+            </div>
+          </div>
+          <!-- Model -->
+          <div class="form-group" v-if="user.os">
+            <h2>Model</h2>
+            <div class="row mb-3">
+              <label for="phoneModel">Choose your Phone Model</label>
+              <select
+                name="phoneModel"
+                v-model="user.phoneModel"
+                class="form-control"
+              >
+                <option
+                  v-for="model in filteredPhoneModels(user.os)"
+                  :value="model"
+                  :key="model"
+                >
+                  {{ model }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <div class="mt-4" v-if="submitted">
+          <h4>Summary:</h4>
+          <p>Username: {{ user.username }}</p>
+          <p>Password: Confidential</p>
+          <p>Mobile OS: {{ user.os }}</p>
+          <p>Phone Model: {{ user.phoneModel }}</p>
+        </div>
+      </section>
+    </div>
+    <!-- Bootstrap JavaScript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <!-- VueJS Script -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            user: {
+              username: "",
+              password: "",
+              os: "",
+              phoneModel: "",
+            },
+            re_password: "",
+            submitted: false,
+            phonesData: [
+              { model: "HTC 10", os: "Android" },
+              { model: "Nokia 6", os: "Android" },
+              { model: "Samsung Galaxy 20 Ultra", os: "Android" },
+              { model: "IDD VIOS Non Windows", os: "Android" },
+              { model: "iPhone X", os: "IOS" },
+              { model: "iPhone Xs Max", os: "IOS" },
+              { model: "iPhone 11 Pro Max", os: "IOS" },
+              { model: "IDD Windows Non Android", os: "IOS" },
+              { model: "HP Elite x3", os: "Windows" },
+              { model: "Microsoft 950", os: "Windows" },
+              { model: "Microsoft 950XL", os: "Windows" },
+              { model: "IDD VIOS Non Android", os: "Windows" },
+            ],
+          };
+        },
+        computed: {
+          passwordNoMatch() {
+            return this.user.password !== this.re_password;
+          },
+          separateOS() {
+            const osSet = new Set(this.phonesData.map((phone) => phone.os));
+            return Array.from(osSet);
+          },
+        },
+        methods: {
+          submitForm() {
+            this.submitted = true;
+          },
+          filteredPhoneModels(os) {
+            return this.phonesData
+              .filter((phone) => phone.os === os)
+              .map((phone) => phone.model);
+          },
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
