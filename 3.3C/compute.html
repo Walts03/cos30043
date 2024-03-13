@@ -23,7 +23,7 @@
             </label>
             <input
               v-model.number="weight"
-              type="number"
+              type="text"
               placeholder="enter your weight..."
             />
           </div>
@@ -34,7 +34,7 @@
             </label>
             <input
               v-model.number="height"
-              type="number"
+              type="text"
               placeholder="enter your height..."
             />
           </div>
@@ -84,7 +84,7 @@
         },
         methods: {
           calcBMI() {
-            return this.weight / (this.height * 0.01);
+            return this.weight / (this.height / 100) ** 2;
           },
         },
       });

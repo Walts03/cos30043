@@ -60,7 +60,7 @@
           <!-- Operating system -->
           <div class="form-group">
             <h2>Operating System</h2>
-            <div class="form-check col-md-4" v-for="os in separateOS" :key="os">
+            <div class="form-check col-md-4" v-for="os in defineOS" :key="os">
               <div class="row-cols-md-9">
                 <input
                   class="form-check-input"
@@ -83,7 +83,7 @@
                 class="form-control"
               >
                 <option
-                  v-for="model in filteredPhoneModels(user.os)"
+                  v-for="model in filterPhoneModel(user.os)"
                   :value="model"
                   :key="model"
                 >
@@ -98,7 +98,6 @@
         <div class="mt-4" v-if="submitted">
           <h4>Summary:</h4>
           <p>Username: {{ user.username }}</p>
-          <p>Password: Confidential</p>
           <p>Mobile OS: {{ user.os }}</p>
           <p>Phone Model: {{ user.phoneModel }}</p>
         </div>
@@ -144,7 +143,7 @@
           passwordNoMatch() {
             return this.user.password !== this.re_password;
           },
-          separateOS() {
+          defineOS() {
             const osSet = new Set(this.phonesData.map((phone) => phone.os));
             return Array.from(osSet);
           },
@@ -153,7 +152,7 @@
           submitForm() {
             this.submitted = true;
           },
-          filteredPhoneModels(os) {
+          filterPhoneModel(os) {
             return this.phonesData
               .filter((phone) => phone.os === os)
               .map((phone) => phone.model);
