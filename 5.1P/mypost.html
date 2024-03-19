@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <title>Status Post</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <h1>Status Post</h1>
+        <div class="form-group">
+          <label for="strStatus" class="form-check-label">Status:</label>
+          <input
+            class="form-control"
+            v-model="strStatus"
+            type="text"
+            placeholder="Enter your Status"
+            required
+          />
+          <button @click="add" class="btn btn-primary mt-2">Post</button>
+        </div>
+
+        <div v-if="statPosts.length > 0">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Status</th>
+                <th scope="col">Function</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(str, index) in statPosts" :key="index">
+                <td>{{ index + 1 }}</td>
+                <td>{{ str }}</td>
+                <td>
+                  <button @click="remove(index)" class="btn btn-primary">
+                    Del
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap JavaScript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <!-- VueJS Script -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Additional JavaScript -->
+    <script src="appmypost.js"></script>
+  </body>
+</html>
