@@ -16,7 +16,159 @@
     <div id="app">
       <div class="container">
         <h1>Registration</h1>
-        <router-view></router-view>
+        <form
+          @submit.prevent="checkForm"
+          action="http://mercury.swin.edu.au/it000000/formtest.php"
+          method="post"
+          ref="form"
+        >
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="fname"
+              name="fname"
+              v-model.trim="fname"
+              placeholder="Enter your First Name"
+            />
+            <p v-if="errors.fname" class="text-danger">{{ errors.fname }}</p>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lname"
+              name="lname"
+              v-model.trim="lname"
+              placeholder="Enter your Last Name"
+            />
+            <p v-if="errors.lname" class="text-danger">{{ errors.lname }}</p>
+          </div>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              name="username"
+              v-model.trim="username"
+              placeholder="Enter your Username"
+            />
+            <p v-if="errors.username" class="text-danger">
+              {{ errors.username }}
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              v-model="password"
+              placeholder="Enter your password"
+            />
+            <p v-if="errors.password" class="text-danger">
+              {{ errors.password }}
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="confirmPassword"
+              name="confirmPassword"
+              v-model="confirmPassword"
+              placeholder="Confirm your Password"
+            />
+            <p v-if="errors.confirmPassword" class="text-danger">
+              {{ errors.confirmPassword }}
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              v-model.trim="email"
+              placeholder="Enter your Email"
+            />
+            <p v-if="errors.email" class="text-danger">{{ errors.email }}</p>
+          </div>
+          <div class="form-group">
+            <label for="street">Street Address</label>
+            <input
+              type="text"
+              class="form-control"
+              id="street"
+              name="street"
+              v-model.trim="street"
+              placeholder="Enter your Street"
+            />
+          </div>
+          <div class="form-group">
+            <label for="suburb">Suburb</label>
+            <input
+              type="text"
+              class="form-control"
+              id="suburb"
+              name="suburb"
+              v-model.trim="suburb"
+              placeholder="Enter your Suburb"
+            />
+          </div>
+          <div class="form-group">
+            <label for="postcode">Postcode</label>
+            <input
+              type="text"
+              class="form-control"
+              id="postcode"
+              name="postcode"
+              v-model.trim="postcode"
+              placeholder="Enter your Postcode"
+            />
+            <p v-if="errors.postcode" class="text-danger">
+              {{ errors.postcode }}
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="mobile">Mobile Number</label>
+            <input
+              type="text"
+              class="form-control"
+              id="mobile"
+              name="mobile"
+              v-model.trim="mobile"
+              placeholder="Enter your Mobile Number"
+            />
+            <p v-if="errors.mobile" class="text-danger">{{ errors.mobile }}</p>
+          </div>
+          <button type="submit" class="btn btn-primary mt-3">Submit</button>
+          <button
+            type="button"
+            @click="toggleTerms"
+            class="btn btn-secondary mt-3"
+          >
+            Show Terms and Condition
+          </button>
+          <div v-if="showTerms">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+              vestibulum risus et ante blandit faucibus. Suspendisse ultrices
+              tellus est, quis sagittis dui iaculis eget. Nunc nec ligula sem.
+              Ut eleifend orci fermentum lectus dapibus, a bibendum felis
+              vestibulum. Class aptent taciti sociosqu ad litora torquent per
+              conubia nostra, per inceptos himenaeos. Aliquam sed ligula et dui
+              dignissim ornare. In sit amet luctus libero, et blandit tortor.
+              Fusce vestibulum ac lacus et pulvinar.
+            </p>
+          </div>
+        </form>
       </div>
     </div>
     <!-- Bootstrap JavaScript -->
