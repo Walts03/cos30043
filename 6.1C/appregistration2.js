@@ -58,7 +58,6 @@ const app = Vue.createApp({
       }
 
       if (isValid) {
-        // Form is valid, submit it
         this.$refs.form.submit();
       }
     },
