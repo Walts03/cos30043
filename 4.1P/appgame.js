@@ -1,7 +1,7 @@
 const app = Vue.createApp({
   data() {
     return {
-      msg: "Start Guessing",
+      msg: 'Start Guessing!',
       err: false,
       inputNumber: 0,
       resultNumber: `${Math.floor(Math.random() * 100) + 1}`,
