@@ -1,4 +1,4 @@
-// app-deldata  component  
+// app-deldata  component
 const DelData = {
   template: `
   <v-row>
@@ -7,9 +7,8 @@ const DelData = {
 			<v-card class="mx-auto" max-width="90%">
 				<v-card-text>
 					<v-form>
-						<v-text-field label="Name" v-model="name3" />
-						</v-text-field>
-						<v-btn depressed v-on:click="delData(name3)" color="primary">Delete</v-btn>
+					<v-text-field label="Unit Code" v-model="code1" /></v-text-field>
+						<v-btn depressed v-on:click="delData(code1)" color="primary">Delete</v-btn>
 					</v-form>
 				</v-card-text>
 			</v-card>
@@ -31,49 +30,45 @@ const DelData = {
 	</v-row>
            `,
   // variable initialization
-  data: function() {
+  data: function () {
     return {
-      name3: '',
-      msg: '',
-      statusVal: '',
-      statusText: '',
-      headers: '',
-    }
+      code1: "",
+      msg: "",
+      statusVal: "",
+      statusText: "",
+      headers: "",
+    };
   },
 
   methods: {
-
-    delData: function(nm, age) {
-      var delSQLApiURL = 'resources/apis.php/name/' + nm;
-
+    delData: function (cd, dc, cpoint, tp) {
+      var delSQLApiURL = "resources/apis.php/code/" + cd;
 
       var self = this;
       // DELETE request using fetch with error handling
       const requestOptions = {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: nm
-        })
+          code: cd,
+        }),
       };
 
-		 fetch(delSQLApiURL, requestOptions)
-		.then( response =>{
-			//turning the response into the usable data
-			return response.json( );
-		})
-		.then( data =>{
-		  //This is the data you wanted to get from url
-		   self.msg = "Data deleted Successfully"
-			
-		})
-		.catch(error => {
-			self.msg = 'There was an error!';
-			self.statusText = error;
-		});	
- 
-    }
-  }
-}
+      fetch(delSQLApiURL, requestOptions)
+        .then((response) => {
+          //turning the response into the usable data
+          return response.json();
+        })
+        .then((data) => {
+          //This is the data you wanted to get from url
+          self.msg = "Data deleted Successfully";
+        })
+        .catch((error) => {
+          self.msg = "There was an error!";
+          self.statusText = error;
+        });
+    },
+  },
+};

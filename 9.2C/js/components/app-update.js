@@ -9,11 +9,11 @@ const PutData = {
         <v-card-text>
           <!-- Input -->
           <v-form name="myForm2" class="form-horizontal">
-            <v-text-field label="Name" v-model="name2" />
-            </v-text-field>
-            <v-text-field label="Age" v-model="age2" />
-            </v-text-field>
-            <v-btn depressed v-on:click="putData(name2,age2)" color="primary">
+          <v-text-field label="Unit Code" v-model="code1" /></v-text-field>
+          <v-text-field label="Description" v-model="desc1" /></v-text-field>
+         <v-text-field label="CP" v-model="cp1" /></v-text-field>
+         <v-text-field label="Type" v-model="type1" /></v-text-field>
+            <v-btn depressed v-on:click="putData(code1, desc1, cp1, type1)" color="primary">
               Update
             </v-btn>
           </v-form>
@@ -36,51 +36,50 @@ const PutData = {
   </v-row>
 
      `,
-     //variable initialization
-    data: function() {
-      return {
-        age2: '',
-        name2: '',
-        msg: '',
-        statusVal: '',
-        statusText: '',
-        headers: '',
-      }
-    },
-    methods: {
-
-    putData: function(nm, age) {
-
-      var putSQLApiURL = 'resources/apis.php/name/' + nm;
-
+  //variable initialization
+  data: function () {
+    return {
+      code1: "",
+      desc1: "",
+      cp1: "",
+      type1: "",
+      msg: "",
+      statusVal: "",
+      statusText: "",
+      headers: "",
+    };
+  },
+  methods: {
+    putData: function (cd, dc, cpoint, tp) {
+      var putSQLApiURL = "resources/apis.php/code/" + cd;
 
       var self = this;
       // POST request using fetch with error handling
       const requestOptions = {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: nm,
-          age: age
-        })
+          code: cd,
+          desc: dc,
+          cp: cpoint,
+          type: tp,
+        }),
       };
 
-		fetch(putSQLApiURL, requestOptions)
-		.then( response =>{
-		  //turning the response into the usable data
-		  return response.json( );
-		})
-		.then( data =>{
-		  //This is the data you wanted to get from url
-		  self.msg="successful";
-		})
-		.catch(error => {
-		  self.err=error
-		});
-
-    }
-
-    }
-  }
+      fetch(putSQLApiURL, requestOptions)
+        .then((response) => {
+          //turning the response into the usable data
+          return response.json();
+        })
+        .then((data) => {
+          //This is the data you wanted to get from url
+          self.msg = "Successful";
+        })
+        .catch((error) => {
+          self.err = error;
+        });
+    },
+  },
+};

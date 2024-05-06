@@ -11,19 +11,16 @@ const PostData = {
 
        <v-card-text>
    	<v-form>
-          <v-text-field label="Name" v-model="name1" /></v-text-field>
-   				<v-text-field label="Age" v-model="age1" /></v-text-field>
+          <v-text-field label="Unit Code" v-model="code1" /></v-text-field>
+   				<v-text-field label="Description" v-model="desc1" /></v-text-field>
+          <v-text-field label="CP" v-model="cp1" /></v-text-field>
+          <v-text-field label="Type" v-model="type1" /></v-text-field>
 
-
-        <v-radio-group label="Smiley Color" v-model="imgVar">
-          <v-radio label="White" value="1"></v-radio>
-          <v-radio label="Yellow" value="2"></v-radio>
-        </v-radio-group>
 
 
         <v-btn
         depressed
-        v-on:click="postData(name1,age1, imgVar)"
+        v-on:click="postData(code1, desc1, cp1, type1)"
         color="primary">
         Add
       </v-btn>
@@ -52,56 +49,59 @@ const PostData = {
 </v-row>
 
    `,
-  data: function() {
+  data: function () {
     return {
-      age1: '',
-      name1: '',
-      msg: '',
-      imgVar: '',
-      statusVal: '',
-      statusText: '',
-      headers: '',
-      savingSuccessful: false
-    }
+      code1: "",
+      desc1: "",
+      cp1: "",
+      type1: "",
+      msg: "",
+      statusVal: "",
+      statusText: "",
+      headers: "",
+      savingSuccessful: false,
+    };
   },
   methods: {
-
-    postData: function(nm, age, img) {
-      //define url for api
-      var postSQLApiURL = 'resources/apis.php/'
+    postData: function (cd, dc, cpoint, tp) {
+      var postSQLApiURL = "resources/apis.php/";
 
       var self = this;
-      // POST request using fetch with error handling
       const requestOptions = {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: nm,
-          age: age,
-          fpath: 'img/smiley' + img + '.png'
-        })
+          code: cd,
+          desc: dc,
+          cp: cpoint,
+          type: tp,
+        }),
       };
 
-       
-		
-		fetch(postSQLApiURL, requestOptions)
-		.then( response =>{
-		  //turning the response into the usable data
-		  return response.json( );
-		})
-		.then( data =>{
-		  //This is the data you wanted to get from url
-		   self.msg = "Data Inserted Successfully."  ;
-		})
-		.catch(error => {
-		   self.msg = 'There was an error!' + error;
-		});	
-	
-		
-		
-    }
-
-  }
+      fetch(postSQLApiURL, requestOptions)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(
+              "Network response was not ok: " + response.statusText
+            );
+          }
+          return response.text();
+        })
+        .then((text) => {
+          return text ? JSON.parse(text) : {};
+        })
+        .then((data) => {
+          self.msg = "Data Inserted Successfully.";
+          self.statusVal = "Success";
+          self.statusText = "OK";
+        })
+        .catch((error) => {
+          self.msg = "There was an error! " + error;
+          self.statusVal = "Failed";
+          self.statusText = error.message;
+        });
+    },
+  },
 };
