@@ -1,3 +1,6 @@
 [submodule "6.2D-HD/MealCards-mercury"]
 	path = 6.2D-HD/MealCards-mercury
 	url = https://github.com/Walts03/MealCards-mercury
+[submodule "6.2D-HD/MealCards-localhost"]
+	path = 6.2D-HD/MealCards-localhost
+	url = https://github.com/Walts03/MealCards-localhost
