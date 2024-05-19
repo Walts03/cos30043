@@ -7,6 +7,7 @@ MealCards is a individual webpage project using VueJS and public APIs with the a
 MealCards is a Vue.js application that allows users to browse, search, and save their favorite meals, responsive and scalability design. The application interacts with the MealDB API to fetch meal data and uses a MySQL database to store user preferences.
 
 - APIs: [TheMealDB](https://www.themealdb.com/api.php)
+- Public URL [MealCards](https://)
 
 ## Table of Contents
 
@@ -89,8 +90,8 @@ mealcards-master/
 ## Acknowledgments
 
 - API: [TheMealDB](https://themealdb.com/)
-- Hosting: [Mercury](mercury.swin.edu.au)
-- Database: [MariaDB](feenix-mariadb-web.swin.edu.au)
+- Hosting: [Mercury](https://mercury.swin.edu.au)
+- Database: [MariaDB](https://feenix-mariadb-web.swin.edu.au)
 - [MealCards-localhost](https://github.com/Walts03/MealCards-localhost)
 - [MealCards-mercury](https://github.com/Walts03/MealCards-mercury)
 - [COS30043 - Interface Design and Development](https://github.com/Walts03/cos30043)
