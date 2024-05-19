@@ -84,3 +84,12 @@ mealcards-master/
    5.Tailwind CSS: Utility-first CSS framework for styling
 5. MySQL: Relational database for storing user data
 6. Nginx: Web server and reverse proxy
+
+## Acknowledgments
+
+- API: [TheMealDB](https://themealdb.com/)
+- Hosting: [Mercury](mercury.swin.edu.au)
+- Database: [MariaDB](feenix-mariadb-web.swin.edu.au)
+- [MealCards-localhost](https://github.com/Walts03/MealCards-localhost)
+- [MealCards-mercury](https://github.com/Walts03/MealCards-mercury)
+- [COS30043 - Interface Design and Development](https://github.com/Walts03/cos30043)
