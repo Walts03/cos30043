@@ -14,6 +14,7 @@ MealCards is a Vue.js application that allows users to browse, search, and save 
 - [Project Structure](#project-structure)
 - [Setup and Installation](#setup-and-installation)
 - [Technologies Used](#technologies-used)
+- [Acknowledgments](#acknowledgments)
 
 ## Features
 
