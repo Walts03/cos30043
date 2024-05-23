@@ -1,0 +1,109 @@
+@startuml
+!define RECTANGLE class
+
+package "Components" {
+    RECTANGLE Navbar {
+        navigation bar
+    }
+    RECTANGLE MealItem {
+        card template
+    }
+    RECTANGLE FavoriteMeals {
+        list of favorite meals
+    }
+    RECTANGLE Login {
+        login form
+    }
+    RECTANGLE Register {
+        registration form
+    }
+    RECTANGLE Notification {
+        alerts and notifications
+    }
+    RECTANGLE PaginateControl {
+        pagination controls
+    }
+    RECTANGLE Footer {
+        footer content
+    }
+    RECTANGLE DefaultLayout {
+        default layout
+    }
+    RECTANGLE UnauthenticatedLayout {
+        layout for unauthenticated users
+    }
+    RECTANGLE YoutubeButton {
+        YouTube button
+    }
+}
+
+package "Views" {
+    RECTANGLE HomeView {
+        general info and meal listing
+    }
+    RECTANGLE IngredientsView {
+        list of ingredients
+    }
+    RECTANGLE MealDetailsView {
+        meal details
+    }
+    RECTANGLE SearchByIngredientView {
+        search meals by ingredient
+    }
+    RECTANGLE SearchByLetterView {
+        search meals by letter
+    }
+    RECTANGLE SearchByNameView {
+        search meals by name
+    }
+}
+
+RECTANGLE App.vue
+RECTANGLE "router/index.js" as Router
+RECTANGLE "main.js" as Main
+RECTANGLE "axiosClient.js" as AxiosClient
+RECTANGLE "index.html" as IndexHtml
+RECTANGLE "TheMealDB API" as MealDB
+RECTANGLE "api_register.php" as ApiRegister
+RECTANGLE "api_user.php" as ApiUser
+RECTANGLE "db.php" as Db
+RECTANGLE "favorites.php" as Favorites
+
+Main -[hidden]-> App.vue
+Router -[hidden]-> App.vue
+Main -down-> Router
+Main -down-> AxiosClient
+Main -down-> IndexHtml
+AxiosClient -down-> MealDB
+
+App.vue -down-> HomeView
+App.vue -down-> IngredientsView
+App.vue -down-> MealDetailsView
+App.vue -down-> SearchByIngredientView
+App.vue -down-> SearchByLetterView
+App.vue -down-> SearchByNameView
+
+HomeView -left-> Navbar : uses
+HomeView -down-> Notification : uses
+HomeView -down-> Footer : uses
+HomeView -down-> DefaultLayout : uses
+
+IngredientsView -down-> MealItem : uses
+MealDetailsView -down-> MealItem : uses
+SearchByIngredientView -down-> MealItem : uses
+SearchByLetterView -down-> MealItem : uses
+SearchByNameView -down-> MealItem : uses
+
+LoginView -down-> Login : uses
+RegisterView -down-> Register : uses
+
+DefaultLayout -down-> UnauthenticatedLayout : uses
+DefaultLayout -down-> YoutubeButton : uses
+
+Favorites -down-> FavoriteMeals : uses
+ApiRegister -down-> Register : uses
+ApiUser -down-> Login : uses
+Db -down-> ApiRegister : uses
+Db -down-> ApiUser : uses
+Db -down-> Favorites : uses
+@enduml
