@@ -1,109 +1,115 @@
 @startuml
-!define RECTANGLE class
+package "src" {
+  class main.js
+  class axiosClient.js
+  class index.html
+  class "router/index.js"
+  class App.vue {
+    <router-view>
+  }
+  class TheMealDB_API
 
-package "Components" {
-    RECTANGLE Navbar {
-        navigation bar
+  package "views" {
+    class HomeView {
+      general info and meal listing
     }
-    RECTANGLE MealItem {
-        card template
+    class SearchByLetterView {
+      search meals by letter
     }
-    RECTANGLE FavoriteMeals {
-        list of favorite meals
+    class SearchByNameView {
+      search meals by name
     }
-    RECTANGLE Login {
-        login form
+    class SearchByIngredientView {
+      search meals by ingredient
     }
-    RECTANGLE Register {
-        registration form
+    class IngredientsView {
+      list of ingredients
     }
-    RECTANGLE Notification {
-        alerts and notifications
+    class MealDetailsView {
+      meal details
     }
-    RECTANGLE PaginateControl {
-        pagination controls
+  }
+
+  package "components" {
+    class DefaultLayout {
+      default layout
     }
-    RECTANGLE Footer {
-        footer content
+    class UnauthenticatedLayout {
+      layout for unauthenticated users
     }
-    RECTANGLE DefaultLayout {
-        default layout
+    class Navbar {
+      navigation bar
     }
-    RECTANGLE UnauthenticatedLayout {
-        layout for unauthenticated users
+    class MealItem {
+      card template
     }
-    RECTANGLE YoutubeButton {
-        YouTube button
+    class Notification {
+      alerts and notifications
     }
+    class Footer {
+      footer content
+    }
+    class FavoriteMeals {
+      list of favorite meals
+    }
+    class PaginateControl {
+      pagination controls
+    }
+    class Login {
+      login form
+    }
+    class Register {
+      registration form
+    }
+    class YoutubeButton {
+      YouTube button
+    }
+  }
+
+  package "resources" {
+    class api_register.php
+    class api_user.php
+    class db.php
+    class favorites.php
+    class vote.php
+  }
 }
 
-package "Views" {
-    RECTANGLE HomeView {
-        general info and meal listing
-    }
-    RECTANGLE IngredientsView {
-        list of ingredients
-    }
-    RECTANGLE MealDetailsView {
-        meal details
-    }
-    RECTANGLE SearchByIngredientView {
-        search meals by ingredient
-    }
-    RECTANGLE SearchByLetterView {
-        search meals by letter
-    }
-    RECTANGLE SearchByNameView {
-        search meals by name
-    }
-}
+main.js --> App.vue
+App.vue --> "router/index.js"
+App.vue --> axiosClient.js
+App.vue --> index.html
+App.vue --> TheMealDB_API
 
-RECTANGLE App.vue
-RECTANGLE "router/index.js" as Router
-RECTANGLE "main.js" as Main
-RECTANGLE "axiosClient.js" as AxiosClient
-RECTANGLE "index.html" as IndexHtml
-RECTANGLE "TheMealDB API" as MealDB
-RECTANGLE "api_register.php" as ApiRegister
-RECTANGLE "api_user.php" as ApiUser
-RECTANGLE "db.php" as Db
-RECTANGLE "favorites.php" as Favorites
+App.vue --> HomeView
+HomeView --> SearchByLetterView
+HomeView --> SearchByNameView
+HomeView --> SearchByIngredientView
+HomeView --> IngredientsView
+HomeView --> MealDetailsView
 
-Main -[hidden]-> App.vue
-Router -[hidden]-> App.vue
-Main -down-> Router
-Main -down-> AxiosClient
-Main -down-> IndexHtml
-AxiosClient -down-> MealDB
+HomeView --> MealItem
+HomeView --> Notification
+HomeView --> Footer
+HomeView --> DefaultLayout
+HomeView --> Navbar
 
-App.vue -down-> HomeView
-App.vue -down-> IngredientsView
-App.vue -down-> MealDetailsView
-App.vue -down-> SearchByIngredientView
-App.vue -down-> SearchByLetterView
-App.vue -down-> SearchByNameView
+DefaultLayout --> FavoriteMeals
+DefaultLayout --> PaginateControl
+DefaultLayout --> Login
+DefaultLayout --> Register
+DefaultLayout --> YoutubeButton
 
-HomeView -left-> Navbar : uses
-HomeView -down-> Notification : uses
-HomeView -down-> Footer : uses
-HomeView -down-> DefaultLayout : uses
+UnauthenticatedLayout --> Login
+UnauthenticatedLayout --> Register
 
-IngredientsView -down-> MealItem : uses
-MealDetailsView -down-> MealItem : uses
-SearchByIngredientView -down-> MealItem : uses
-SearchByLetterView -down-> MealItem : uses
-SearchByNameView -down-> MealItem : uses
+db.php --> favorites.php
+db.php --> api_user.php
+db.php --> api_register.php
+db.php --> vote.php
 
-LoginView -down-> Login : uses
-RegisterView -down-> Register : uses
-
-DefaultLayout -down-> UnauthenticatedLayout : uses
-DefaultLayout -down-> YoutubeButton : uses
-
-Favorites -down-> FavoriteMeals : uses
-ApiRegister -down-> Register : uses
-ApiUser -down-> Login : uses
-Db -down-> ApiRegister : uses
-Db -down-> ApiUser : uses
-Db -down-> Favorites : uses
+api_register.php --> Register
+api_user.php --> Login
+favorites.php --> FavoriteMeals
+vote.php --> FavoriteMeals
 @enduml
